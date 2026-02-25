@@ -1,0 +1,102 @@
+/* ── OctoFit Tracker – global app styles ── */
+
+/* Navbar brand */
+.octofit-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+/* Active nav link highlight */
+.navbar-nav .nav-link.active {
+  color: #0d6efd !important;
+  font-weight: 600;
+}
+
+/* Page wrapper */
+.octofit-page {
+  min-height: calc(100vh - 56px);
+  background-color: #f8f9fa;
+  padding-bottom: 3rem;
+}
+
+/* Section card */
+.octofit-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.octofit-card .card-header {
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Consistent table */
+.octofit-table thead th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: none;
+}
+
+.octofit-table tbody tr:hover {
+  background-color: #e9f0ff;
+}
+
+/* Hero section on home page */
+.octofit-hero {
+  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.octofit-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Feature cards on home page */
+.octofit-feature-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.octofit-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  color: inherit;
+}
+
+.octofit-feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Rank badge */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Footer */
+.octofit-footer {
+  background-color: #212529;
+  color: #adb5bd;
+  font-size: 0.85rem;
+  padding: 1rem 0;
+  text-align: center;
+}

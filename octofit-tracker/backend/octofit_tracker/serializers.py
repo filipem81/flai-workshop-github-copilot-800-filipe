@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['_id', 'username', 'email', 'password']
+        fields = ['_id', 'name', 'username', 'email', 'password']
 
 
 class TeamSerializer(serializers.ModelSerializer):
@@ -44,6 +44,10 @@ class ActivitySerializer(serializers.ModelSerializer):
 class LeaderboardSerializer(serializers.ModelSerializer):
     _id = serializers.SerializerMethodField()
     user = serializers.SerializerMethodField()
+    username = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+    team = serializers.SerializerMethodField()
+    total_calories = serializers.SerializerMethodField()
 
     def get__id(self, obj):
         return str(obj._id) if obj._id else None
@@ -51,9 +55,38 @@ class LeaderboardSerializer(serializers.ModelSerializer):
     def get_user(self, obj):
         return str(obj.user_id) if obj.user_id else None
 
+    def get_username(self, obj):
+        try:
+            return obj.user.username
+        except Exception:
+            return None
+
+    def get_name(self, obj):
+        try:
+            return obj.user.name
+        except Exception:
+            return None
+
+    def get_team(self, obj):
+        try:
+            user_id = obj.user_id
+            team = Team.objects.filter(members=user_id).first()
+            return team.name if team else None
+        except Exception:
+            return None
+
+    def get_total_calories(self, obj):
+        try:
+            activities = Activity.objects.filter(user=obj.user_id)
+            total_duration = sum(a.duration for a in activities)
+            # Estimate: 10 calories per minute of activity
+            return round(total_duration * 10)
+        except Exception:
+            return 0
+
     class Meta:
         model = Leaderboard
-        fields = ['_id', 'user', 'score']
+        fields = ['_id', 'user', 'username', 'name', 'team', 'score', 'total_calories']
 
 
 class WorkoutSerializer(serializers.ModelSerializer):

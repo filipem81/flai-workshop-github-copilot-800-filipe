@@ -18,17 +18,17 @@ class Command(BaseCommand):
 
         # Create users (superheroes)
         users_data = [
-            {'username': 'ironman', 'email': 'ironman@avengers.com', 'password': 'ironman123'},
-            {'username': 'spiderman', 'email': 'spiderman@avengers.com', 'password': 'spidey123'},
-            {'username': 'thor', 'email': 'thor@avengers.com', 'password': 'thor123'},
-            {'username': 'batman', 'email': 'batman@dc.com', 'password': 'batman123'},
-            {'username': 'superman', 'email': 'superman@dc.com', 'password': 'superman123'},
-            {'username': 'wonderwoman', 'email': 'wonderwoman@dc.com', 'password': 'ww123'},
+            {'name': 'Tony Stark',      'username': 'ironman',     'email': 'ironman@avengers.com',     'password': 'ironman123'},
+            {'name': 'Peter Parker',    'username': 'spiderman',   'email': 'spiderman@avengers.com',   'password': 'spidey123'},
+            {'name': 'Thor Odinson',    'username': 'thor',        'email': 'thor@avengers.com',        'password': 'thor123'},
+            {'name': 'Bruce Wayne',     'username': 'batman',      'email': 'batman@dc.com',            'password': 'batman123'},
+            {'name': 'Clark Kent',      'username': 'superman',    'email': 'superman@dc.com',          'password': 'superman123'},
+            {'name': 'Diana Prince',    'username': 'wonderwoman', 'email': 'wonderwoman@dc.com',       'password': 'ww123'},
         ]
 
         users = {}
         for data in users_data:
-            user = User(username=data['username'], email=data['email'], password=data['password'])
+            user = User(name=data['name'], username=data['username'], email=data['email'], password=data['password'])
             user.save()
             users[data['username']] = user
             self.stdout.write(f"Created user: {user.username}")
