@@ -35,6 +35,10 @@ if codespace_name:
 else:
     base_url = "http://localhost:8000"
 
+# Make base_url available to views via settings
+from django.conf import settings as django_settings
+django_settings.API_BASE_URL = base_url
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', api_root, name='api-root'),
